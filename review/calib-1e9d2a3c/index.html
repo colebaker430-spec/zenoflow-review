@@ -1,0 +1,58 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1"><meta name="robots" content="noindex">
+<title>Teach the checker</title><style>
+:root{--bg:#f6f5f1;--fg:#16181d;--mut:#5d6470;--acc:#1f6f5c}
+*{box-sizing:border-box;margin:0}body{background:var(--bg);color:var(--fg);font:16px/1.45 -apple-system,system-ui,sans-serif}
+main{max-width:460px;margin:0 auto;padding:18px 16px 60px}h1{font-size:22px}p.lead{color:var(--mut);margin:6px 0 18px}
+section{background:#fff;border-radius:16px;padding:12px;margin:0 0 18px;box-shadow:0 1px 3px #0001}
+h2{font-size:13px;color:var(--mut);font-weight:600;margin:0 0 8px}
+video{width:100%;aspect-ratio:9/16;border-radius:12px;background:#000}
+.row{display:flex;gap:10px;margin-top:10px}button{flex:1;height:52px;border-radius:12px;font-size:16px;font-weight:700;border:0}
+.y{background:var(--acc);color:#fff}.n{background:#fff;color:var(--fg);border:2px solid #c9ccd2}
+.done{display:none;margin-top:10px;font-weight:600;text-align:center}</style></head><body><main>
+<h1>Teach the checker</h1><p class="lead">12 past reels. Would you be proud to post it today? One tap each. The checker has to
+agree with you before it judges new reels.</p>
+<section><h2>1 of 12</h2>
+<video src="01.mp4" poster="01.jpg" controls playsinline preload="none"></video>
+<div class="row" data-r="reel-06-7-agents"><button class="y">Proud of it</button><button class="n">Not good enough</button></div>
+<div class="done"></div></section><section><h2>2 of 12</h2>
+<video src="02.mp4" poster="02.jpg" controls playsinline preload="none"></video>
+<div class="row" data-r="reel-18-ai-tools"><button class="y">Proud of it</button><button class="n">Not good enough</button></div>
+<div class="done"></div></section><section><h2>3 of 12</h2>
+<video src="03.mp4" poster="03.jpg" controls playsinline preload="none"></video>
+<div class="row" data-r="reel-32-ai-tools"><button class="y">Proud of it</button><button class="n">Not good enough</button></div>
+<div class="done"></div></section><section><h2>4 of 12</h2>
+<video src="04.mp4" poster="04.jpg" controls playsinline preload="none"></video>
+<div class="row" data-r="reel-42-kbf-ricky"><button class="y">Proud of it</button><button class="n">Not good enough</button></div>
+<div class="done"></div></section><section><h2>5 of 12</h2>
+<video src="05.mp4" poster="05.jpg" controls playsinline preload="none"></video>
+<div class="row" data-r="reel-44-kbf-ricky-film"><button class="y">Proud of it</button><button class="n">Not good enough</button></div>
+<div class="done"></div></section><section><h2>6 of 12</h2>
+<video src="06.mp4" poster="06.jpg" controls playsinline preload="none"></video>
+<div class="row" data-r="reel-46-ai-tools"><button class="y">Proud of it</button><button class="n">Not good enough</button></div>
+<div class="done"></div></section><section><h2>7 of 12</h2>
+<video src="07.mp4" poster="07.jpg" controls playsinline preload="none"></video>
+<div class="row" data-r="reel-47-kbf-wheres-my-order"><button class="y">Proud of it</button><button class="n">Not good enough</button></div>
+<div class="done"></div></section><section><h2>8 of 12</h2>
+<video src="08.mp4" poster="08.jpg" controls playsinline preload="none"></video>
+<div class="row" data-r="reel-48-ai-tools"><button class="y">Proud of it</button><button class="n">Not good enough</button></div>
+<div class="done"></div></section><section><h2>9 of 12</h2>
+<video src="09.mp4" poster="09.jpg" controls playsinline preload="none"></video>
+<div class="row" data-r="reel-51-dtc"><button class="y">Proud of it</button><button class="n">Not good enough</button></div>
+<div class="done"></div></section><section><h2>10 of 12</h2>
+<video src="10.mp4" poster="10.jpg" controls playsinline preload="none"></video>
+<div class="row" data-r="reel-52-dtc"><button class="y">Proud of it</button><button class="n">Not good enough</button></div>
+<div class="done"></div></section><section><h2>11 of 12</h2>
+<video src="11.mp4" poster="11.jpg" controls playsinline preload="none"></video>
+<div class="row" data-r="reel-53-dtc"><button class="y">Proud of it</button><button class="n">Not good enough</button></div>
+<div class="done"></div></section><section><h2>12 of 12</h2>
+<video src="12.mp4" poster="12.jpg" controls playsinline preload="none"></video>
+<div class="row" data-r="reel-54-dtc"><button class="y">Proud of it</button><button class="n">Not good enough</button></div>
+<div class="done"></div></section></main><script>
+document.querySelectorAll('.row').forEach(row=>{const r=row.dataset.r,d=row.nextElementSibling;
+const send=w=>{row.style.display='none';d.style.display='block';d.textContent='Sending...';
+fetch('https://ntfy.sh/zfrev-c3df061b4849dd67',{method:'POST',body:'ZFCAL-'+w+' '+r+' 0e2583c3c28d'})
+.then(x=>{d.textContent=x.ok?(w==='YES'?'Saved: proud':'Saved: not good enough'):'Did not send. Tap again.';if(!x.ok)row.style.display='flex'})
+.catch(()=>{d.textContent='Did not send. Tap again.';row.style.display='flex'})};
+row.querySelector('.y').onclick=()=>send('YES');row.querySelector('.n').onclick=()=>send('NO');});
+</script></body></html>
