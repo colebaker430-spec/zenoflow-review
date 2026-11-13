@@ -1,0 +1,37 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="robots" content="noindex"><title>Review: Black Friday&#x27;s 11 days away, and your best ad is hiding</title>
+<style>
+:root{--bg:#0b0b0c;--fg:#f4f1ea;--mut:#9a968d;--gold:#d8b25a}
+*{box-sizing:border-box;margin:0}html,body{background:var(--bg);color:var(--fg);font:16px/1.4 -apple-system,system-ui,sans-serif}
+main{min-height:100dvh;display:flex;flex-direction:column;align-items:center;padding:12px 16px calc(16px + env(safe-area-inset-bottom))}
+h1{font-size:15px;font-weight:600;color:var(--mut);margin:2px 0 10px;text-align:center}
+video{width:auto;max-width:100%;height:calc(100dvh - 190px);aspect-ratio:9/16;border-radius:14px;background:#000;object-fit:contain}
+p{color:var(--mut);font-size:14px;margin:10px 0 0;text-align:center;max-width:420px}
+.row{display:flex;gap:12px;width:100%;max-width:420px;margin-top:12px}
+button{flex:1;height:58px;border-radius:14px;font-size:20px;font-weight:700;border:0;cursor:pointer}
+#yes{background:var(--gold);color:#111}#no{background:transparent;color:var(--fg);border:2px solid #444}
+#done{display:none;margin-top:14px;font-size:18px;font-weight:600}
+#why{display:none;width:100%;max-width:420px;margin-top:10px}#why p{margin:0 0 8px}
+.chips{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
+.chips button{height:46px;font-size:16px;font-weight:600;background:#1b1b1d;color:var(--fg);border:1px solid #444;border-radius:12px}
+</style></head><body><main>
+<h1>Black Friday&#x27;s 11 days away, and your best ad is hiding</h1>
+<video src="reel.mp4" poster="poster.jpg" controls playsinline preload="auto"></video>
+<p>SHIP after 6 critic round(s). New standard. Yes = it posts right away.</p>
+<div class="row" id="row"><button id="yes">Yes</button><button id="no">No</button></div>
+<div id="done"></div>
+<div id="why"><p>What was off? One tap.</p><div class="chips">
+<button data-r="hook">Hook</button><button data-r="look">Look</button><button data-r="story">Story</button>
+<button data-r="cta">CTA</button><button data-r="copy">Copy</button><button data-r="layout">Layout</button></div></div>
+</main><script>
+const send=w=>{document.getElementById('row').style.display='none';const d=document.getElementById('done');d.style.display='block';d.textContent='Sending...';
+fetch('https://ntfy.sh/zfrev-c3df061b4849dd67',{method:'POST',body:'ZFREEL-'+w+' reel-67-v5-w46v5-11-real-system-we-buil d2610d337275'})
+.then(r=>{d.textContent=r.ok?(w==='YES'?'Yes sent. It posts at its slot.':'No sent. It will not post.'):'Did not send. Tap again.';if(!r.ok)document.getElementById('row').style.display='flex';else if(w==='NO')document.getElementById('why').style.display='block'})
+.catch(()=>{d.textContent='Did not send. Tap again.';document.getElementById('row').style.display='flex'})};
+document.getElementById('yes').onclick=()=>send('YES');document.getElementById('no').onclick=()=>send('NO');
+document.querySelectorAll('#why button').forEach(b=>b.onclick=()=>{const y=document.getElementById('why');y.querySelector('p').textContent='Sending...';
+fetch('https://ntfy.sh/zfrev-c3df061b4849dd67',{method:'POST',body:'ZFREEL-WHY reel-67-v5-w46v5-11-real-system-we-buil d2610d337275 '+b.dataset.r})
+.then(r=>{if(r.ok){y.querySelector('.chips').style.display='none';y.querySelector('p').textContent='Got it: '+b.textContent+'. Thanks.'}else y.querySelector('p').textContent='Did not send. Tap again.'})
+.catch(()=>{y.querySelector('p').textContent='Did not send. Tap again.'})});
+</script></body></html>
